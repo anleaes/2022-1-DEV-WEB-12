@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'core.apps.CoreConfig',
     'tipo.apps.TipoConfig',
+    'areadoartista.apps.AreadoartistaConfig',
 ]
 
 MIDDLEWARE = [

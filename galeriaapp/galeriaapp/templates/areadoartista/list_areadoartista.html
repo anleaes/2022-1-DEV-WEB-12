@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Areas dos Artistas - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Area dos Artistas</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <br />
+                    <a href="{% url 'areadoartista:add_areadoartista' %}">Cadastro de nova area do artista</a>
+                <br />
+                <br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descricao</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for areadoartista in areadoartista %}
+                        <tr>
+                            <th scope="row">{{ areadoartista.id }}</th>
+                            <td>{{ areadoartista.name }}</td>
+                            <td>{{ areadoartista.description }}</td>
+                            <td>
+                                <a href="{% url 'areadoartista:edit_areadoartista' areadoartista.id %}" class="btn btn-primary btn-sm">Editar</a>
+                                <a href="{% url 'areadoartista:delete_areadoartista' areadoartista.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
