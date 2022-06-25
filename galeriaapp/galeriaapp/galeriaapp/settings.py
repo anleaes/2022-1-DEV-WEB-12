@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'tipo.apps.TipoConfig',
     'areadoartista.apps.AreadoartistaConfig',
+    'obras.apps.ObrasConfig',
 ]
 
 MIDDLEWARE = [
