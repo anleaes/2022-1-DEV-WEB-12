@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ObraForm
-from .models import Obras
+from .models import Obra
 
 # Create your views here.
 
-def add_obras(request):
+def add_obra(request):
     template_name = 'obras/add_obras.html'
     context = {}
     if request.method == 'POST':
@@ -20,7 +20,7 @@ def add_obras(request):
 
 def list_obras(request):
     template_name = 'obras/list_obras.html'
-    obras = Obras.objects.filter()
+    obras = Obra.objects.filter()
     context = {
         'obras': obras
     }
@@ -29,7 +29,7 @@ def list_obras(request):
 def edit_obra(request, id_obra):
     template_name = 'obras/add_obras.html'
     context ={}
-    obra = get_object_or_404(Obras, id=id_obra)
+    obra = get_object_or_404(Obra, id=id_obra)
     if request.method == 'POST':
         form = ObraForm(request.POST, request.FILES,  instance=obra)
         if form.is_valid():
@@ -40,6 +40,6 @@ def edit_obra(request, id_obra):
     return render(request, template_name, context)
 
 def delete_obra(request, id_obra):
-    obra = Obras.objects.get(id=id_obra)
+    obra = Obra.objects.get(id=id_obra)
     obra.delete()
     return redirect('obras:list_obras')
