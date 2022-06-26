@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Artistas - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Artistas</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <br />
+                    <a href="{% url 'artistas:add_artista' %}">Cadastro de novo artista</a>
+                <br />
+                <br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sobrenome</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">Area do Artista</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for artista in artistas %}
+                        <tr>
+                            <th scope="row">{{ artista.id }}</th>
+                            <td>{{ artista.first_name }}</td>
+                            <td>{{ artista.last_name }}</td>
+                            <td>{{ artista.gender }}</td>
+                            <td>
+                                {% for artista_areadoartista in artista_areadoartistas %}
+                                    {% if artista_areadoartista.artista_id == artista.id %}
+                                        <li>{{ artista_areadoartista.areadoartista }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{% url 'artistas:edit_artista' artista.id %}" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'artistas:delete_artista' artista.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                            </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

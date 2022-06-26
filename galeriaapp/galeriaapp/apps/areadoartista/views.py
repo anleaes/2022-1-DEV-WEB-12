@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-
 from .forms import AreadoartistaForm
 from .models import Areadoartista
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_areadoartista(request):
     template_name = 'areadoartista/add_areadoartista.html'
     context = {}
@@ -27,6 +28,7 @@ def list_areadoartista(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_areadoartista(request, id_areadoartista):
     template_name = 'areadoartista/add_areadoartista.html'
     context ={}
@@ -40,6 +42,7 @@ def edit_areadoartista(request, id_areadoartista):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_areadoartista(request, id_areadoartista):
     areadoartista = Areadoartista.objects.get(id=id_areadoartista)
     areadoartista.delete()

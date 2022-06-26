@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Areadoartista(models.Model):
@@ -9,9 +10,23 @@ class Areadoartista(models.Model):
     description = models.TextField('Descricao', max_length=100) 
     
     class Meta:
-        verbose_name = 'Area do Artista'
-        verbose_name_plural = 'Areas do Artista'
+        verbose_name = 'Área do Artista'
+        verbose_name_plural = 'Áreas do Artista'
         ordering =['id']
 
     def __str__(self):
         return self.name
+
+# class ArtistaAreadoartista(models.Model):
+#     created_on = models.DateTimeField(auto_now_add=True)
+#     updated_on = models.DateTimeField(auto_now=True)
+#     client = models.ForeignKey(Artista, on_delete=models.CASCADE)
+#     areadoartista = models.ForeignKey(Areadoartista, on_delete=models.CASCADE)
+
+#     class Meta:
+#         verbose_name = 'Item da Area do Artista'
+#         verbose_name_plural = 'Itens da Area do Artista'
+#         ordering =['id']
+
+#     def __str__(self):
+#         return self.areadoartista.name

@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'obras.apps.ObrasConfig',
     'clients.apps.ClientsConfig',
     'orders.apps.OrdersConfig',
+    'artistas.apps.ArtistasConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [

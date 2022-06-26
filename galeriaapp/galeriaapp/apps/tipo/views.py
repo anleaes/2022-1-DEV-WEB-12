@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import TipoForm
 from .models import Tipo
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='/contas/login/')
 def add_tipo(request):
     template_name = 'tipo/add_tipo.html'
     context = {}
@@ -25,7 +26,7 @@ def list_tipos(request):
         'tipo': tipo
     }
     return render(request, template_name, context)
-
+@login_required(login_url='/contas/login/')
 def edit_tipo(request, id_tipo):
     template_name = 'tipo/add_tipo.html'
     context ={}
@@ -38,7 +39,7 @@ def edit_tipo(request, id_tipo):
     form = TipoForm(instance=tipo)
     context['form'] = form
     return render(request, template_name, context)
-
+@login_required(login_url='/contas/login/')
 def delete_tipo(request, id_tipo):
     tipo = Tipo.objects.get(id=id_tipo)
     tipo.delete()
